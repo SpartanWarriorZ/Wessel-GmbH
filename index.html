@@ -58,12 +58,12 @@
       transition: box-shadow 0.3s, background 0.3s;
     }
     .nav-container {
-      max-width: 1700px; /* vorher 1400px */
+      max-width: 1400px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 2rem 5rem 1.2rem 5rem; /* vorher 3.5rem */
+      padding: 2rem 3.5rem 1.2rem 3.5rem;
       min-height: 90px;
       position: relative;
     }
@@ -101,15 +101,13 @@
       box-shadow: none;
       margin: 0;
       padding: 0;
-      /* Animation und Zoom entfernt */
-      transition: none;
-      will-change: auto;
+      transition: transform 0.35s cubic-bezier(.77,0,.18,1), box-shadow 0.35s cubic-bezier(.77,0,.18,1);
+      will-change: transform, box-shadow;
     }
     .logo img:hover, .logo:hover img {
-      /* Keine Animation/Zoom mehr */
-      transform: none;
-      box-shadow: none;
-      z-index: auto;
+      transform: scale(1.13);
+      box-shadow: 0 8px 32px #3ec6ff44, 0 2px 12px #005b9922;
+      z-index: 10;
     }
     nav ul {
       list-style: none;
@@ -170,8 +168,6 @@
       z-index: 1;
       pointer-events: none;
       animation: heroParallax 18s ease-in-out infinite alternate;
-      /* Parallax wird durch data-scroll-speed gesteuert, Animation bleibt */
-      will-change: transform;
     }
     @keyframes heroParallax {
       0% { transform: translateX(-50%) scale(1) translateY(0); }
@@ -589,13 +585,13 @@
 
   <!-- Hero Section -->
   <section class="hero" data-scroll-section>
-    <img src="image1.jpg" alt="Kesselbau Fertigung" class="hero-bg-img" loading="lazy" id="hero-bg-img" style="opacity:1;" data-scroll data-scroll-speed="-2">
-    <div class="hero-overlay" data-scroll data-scroll-speed="0"></div>
-    <div class="hero-gloss" data-scroll data-scroll-speed="-1"></div>
-    <div class="hero-floating" data-scroll data-scroll-speed="2"></div>
+    <img src="image1.jpg" alt="Kesselbau Fertigung" class="hero-bg-img" loading="lazy" id="hero-bg-img" style="opacity:1;">
+    <div class="hero-overlay"></div>
+    <div class="hero-gloss"></div>
+    <div class="hero-floating"></div>
     <div class="hero-content fade-in" data-scroll data-scroll-speed="1">
-      <h1 class="hero-title" data-scroll data-scroll-speed="2">Moderne Kessellösungen aus Xanten</h1>
-      <p class="hero-desc" data-scroll data-scroll-speed="1">
+      <h1 class="hero-title">Moderne Kessellösungen aus Xanten</h1>
+      <p class="hero-desc">
         Effizienz, Qualität und Nachhaltigkeit – dafür steht die Wessel GmbH.<br>
         Ihr Partner für innovative Kesselbaulösungen.
       </p>
@@ -606,39 +602,38 @@
   <main class="main-content" data-scroll-section>
     <!-- Über uns -->
     <section id="about">
-      <h2 class="section-title fade-in" data-scroll data-scroll-speed="1">Über uns</h2>
+      <h2 class="section-title fade-in" data-scroll>Über uns</h2>
       <div style="display:flex;justify-content:center;">
         <img src="image7.jpg"
           alt="Wessel GmbH Standort"
           class="section-img fade-in"
           data-scroll
-          data-scroll-speed="-1"
           id="about-img"
           style="width:auto;max-width:100%;height:340px;object-fit:contain;display:block;box-shadow:0 8px 40px #3ec6ff44,0 2px 12px #005b9922;border-radius:1.2rem;transition:box-shadow 0.4s;cursor:zoom-in;">
       </div>
-      <div class="about-content fade-in" data-scroll data-scroll-speed="1">
+      <div class="about-content fade-in" data-scroll>
         Die <strong>Wessel GmbH</strong> ist ein innovatives Unternehmen im Bereich Kesselbau mit Sitz in Xanten. Unter der Leitung von Inhaber <strong>Daniel Loules</strong> setzen wir auf modernste Technologien, höchste Qualitätsstandards und nachhaltige Lösungen. Unser Team vereint langjährige Erfahrung mit frischem Innovationsgeist – für Kesselsysteme, die Maßstäbe setzen.
       </div>
     </section>
 
     <!-- Leistungen -->
     <section id="services">
-      <h2 class="section-title fade-in" data-scroll data-scroll-speed="1">Leistungen</h2>
+      <h2 class="section-title fade-in" data-scroll>Leistungen</h2>
       <div class="gallery-row">
-        <img src="image2.jpg" alt="Kesselrohre" class="gallery-img fade-in" data-scroll data-scroll-speed="-1">
-        <img src="image3.jpg" alt="Schweißnaht Detail" class="gallery-img fade-in" data-scroll data-scroll-speed="0">
-        <img src="image4.jpg" alt="Schweißer bei der Arbeit" class="gallery-img fade-in" data-scroll data-scroll-speed="1">
+        <img src="image2.jpg" alt="Kesselrohre" class="gallery-img fade-in" data-scroll>
+        <img src="image3.jpg" alt="Schweißnaht Detail" class="gallery-img fade-in" data-scroll>
+        <img src="image4.jpg" alt="Schweißer bei der Arbeit" class="gallery-img fade-in" data-scroll>
       </div>
       <div class="services-list">
-        <div class="service-card slide-in-left" data-scroll data-scroll-speed="1">
+        <div class="service-card slide-in-left" data-scroll>
           <div class="service-title">Individueller Kesselbau</div>
           <div>Maßgeschneiderte Kessellösungen für Industrie und Gewerbe – von der Planung bis zur Inbetriebnahme.</div>
         </div>
-        <div class="service-card fade-in" data-scroll data-scroll-speed="0">
+        <div class="service-card fade-in" data-scroll>
           <div class="service-title">Modernisierung & Wartung</div>
           <div>Effizienzsteigerung und Werterhalt durch professionelle Modernisierung und regelmäßige Wartung.</div>
         </div>
-        <div class="service-card slide-in-right" data-scroll data-scroll-speed="-1">
+        <div class="service-card slide-in-right" data-scroll>
           <div class="service-title">Nachhaltige Technologien</div>
           <div>Integration energieeffizienter und umweltfreundlicher Technologien für eine grüne Zukunft.</div>
         </div>
@@ -647,29 +642,29 @@
 
     <!-- Projekte -->
     <section id="projects">
-      <h2 class="section-title fade-in" data-scroll data-scroll-speed="1">Projekte</h2>
+      <h2 class="section-title fade-in" data-scroll>Projekte</h2>
       <div class="gallery-row">
-        <img src="image5.jpg" alt="Kesselanlage" class="gallery-img fade-in" data-scroll data-scroll-speed="-1">
-        <img src="image6.jpg" alt="Kesselbau Produktion" class="gallery-img fade-in" data-scroll data-scroll-speed="0">
-        <img src="image8.jpg" alt="Rote Industrieanlage" class="gallery-img fade-in" data-scroll data-scroll-speed="1">
+        <img src="image5.jpg" alt="Kesselanlage" class="gallery-img fade-in" data-scroll>
+        <img src="image6.jpg" alt="Kesselbau Produktion" class="gallery-img fade-in" data-scroll>
+        <img src="image8.jpg" alt="Rote Industrieanlage" class="gallery-img fade-in" data-scroll>
       </div>
       <div class="projects-list">
-        <div class="project-card fade-in" data-scroll data-scroll-speed="1">
-          <img src="image2.jpg" alt="Projekt 1" class="project-img" data-scroll data-scroll-speed="-1">
+        <div class="project-card fade-in" data-scroll>
+          <img src="image2.jpg" alt="Projekt 1" class="project-img">
           <div class="project-info">
             <div class="project-title">Industriekessel für Lebensmittelproduktion</div>
             <div>Effiziente Dampfkessellösung mit modernster Steuerungstechnik.</div>
           </div>
         </div>
-        <div class="project-card fade-in" data-scroll data-scroll-speed="0">
-          <img src="image4.jpg" alt="Projekt 2" class="project-img" data-scroll data-scroll-speed="0">
+        <div class="project-card fade-in" data-scroll>
+          <img src="image4.jpg" alt="Projekt 2" class="project-img">
           <div class="project-info">
             <div class="project-title">Modernisierung Heizkraftwerk</div>
             <div>Nachhaltige Umrüstung auf emissionsarme Brennstoffe.</div>
           </div>
         </div>
-        <div class="project-card fade-in" data-scroll data-scroll-speed="-1">
-          <img src="image5.jpg" alt="Projekt 3" class="project-img" data-scroll data-scroll-speed="1">
+        <div class="project-card fade-in" data-scroll>
+          <img src="image5.jpg" alt="Projekt 3" class="project-img">
           <div class="project-info">
             <div class="project-title">Wartung Großkesselanlage</div>
             <div>Langfristige Betreuung und Optimierung für maximale Betriebssicherheit.</div>
@@ -680,13 +675,12 @@
 
     <!-- Blogartikel: FYST-Projekt -->
     <section id="blog-fyst" style="margin-top:2.5rem;">
-      <h2 class="section-title fade-in" data-scroll data-scroll-speed="1">Von Xanten in die Atacama-Wüste – Wessel GmbH baut am Teleskop der Zukunft</h2>
+      <h2 class="section-title fade-in" data-scroll>Von Xanten in die Atacama-Wüste – Wessel GmbH baut am Teleskop der Zukunft</h2>
       <img src="image9.jpg" id="fyst-img" alt="Fred Young Submillimeter Telescope (FYST) auf dem Gelände der Wessel GmbH"
         class="section-img fade-in"
         data-scroll
-        data-scroll-speed="-2"
         style="cursor:zoom-in;transition:transform 0.3s cubic-bezier(.77,0,.18,1), box-shadow 0.3s;z-index:1;position:relative;">
-      <div class="about-content fade-in" data-scroll data-scroll-speed="1" style="max-width: 800px; margin: 0 auto;">
+      <div class="about-content fade-in" data-scroll style="max-width: 800px; margin: 0 auto;">
         <div style="font-size:1.15em; font-weight:500; margin-bottom:1.2em;">
           Die Wessel GmbH war maßgeblich an der Konstruktion des <strong>Fred Young Submillimeter Telescope (FYST)</strong> beteiligt – ein 6 Meter Radioteleskop, das 2024 in Xanten aufgebaut wurde und künftig in der Atacama-Wüste (Chile) die Entstehung des Universums erforscht.
         </div>
@@ -752,10 +746,10 @@
     const scroll = new LocomotiveScroll({
       el: document.querySelector('[data-scroll-container]'),
       smooth: true,
-      lerp: 0.09, // etwas dynamischer
-      multiplier: 1.18, // mehr Schwung
-      smartphone: { smooth: true, multiplier: 1.05 },
-      tablet: { smooth: true, multiplier: 1.08 }
+      lerp: 0.07,
+      multiplier: 1.1,
+      smartphone: { smooth: true },
+      tablet: { smooth: true }
     });
 
     // Fix: Immer zum Seitenanfang scrollen bei Reload
@@ -834,10 +828,6 @@
         scroll.on('call', () => {
           gsap.fromTo(card, {y: 40, opacity: 0}, {y: 0, opacity: 1, duration: 1, ease: "power2.out"});
         });
-      });
-      // Parallax für Section-Titel
-      gsap.utils.toArray('.section-title').forEach(title => {
-        gsap.fromTo(title, {y: 60, opacity: 0}, {y: 0, opacity: 1, duration: 1.2, ease: "power2.out", scrollTrigger: {trigger: title, start: "top 80%"}});
       });
     }
 
@@ -1022,4 +1012,5 @@
     <span style="display:inline-block;transform:translateY(2px);">↑</span>
   </button>
 </body>
+</html>
 </html>
