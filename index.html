@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wessel GmbH – Moderne Kessellösungen aus Xanten</title>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Locomotive Scroll CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --blue: #005B99;
+      --white: #fff;
+      --gray: #f5f7fa;
+      --font-main: 'Poppins', 'Inter', Arial, sans-serif;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background: var(--gray);
+      color: #222;
+      scroll-behavior: smooth;
+    }
+    body {
+      overflow-x: hidden;
+    }
+    /* Sticky Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2rem;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--blue);
+    }
+    /* Hero Section */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(120deg, var(--blue) 60%, #003a63 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      z-index: 2;
+      max-width: 700px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+      color: #e0eaf6;
+    }
+    .hero-img {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 60vw;
+      max-width: 700px;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 1;
+      /* Parallax effect via JS */
+      will-change: transform;
+    }
+    /* Section Styles */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem 2rem;
+      background: var(--white);
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 24px rgba(0,91,153,0.04);
+      margin-bottom: 2.5rem;
+    }
+    section:not(:first-of-type) {
+      margin-top: 2.5rem;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+    /* Über uns */
+    .about-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+    }
+    /* Leistungen */
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .service-card {
+      background: var(--gray);
+      border-radius: 0.8rem;
+      padding: 2rem 1.2rem;
+      box-shadow: 0 2px 12px rgba(0,91,153,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      will-change: transform;
+    }
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 6px 24px rgba(0,91,153,0.10);
+    }
+    .service-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 0.7rem;
+    }
+    /* Projekte */
+    .projects-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .project-card {
+      background: var(--gray);
+      border-radius: 0.8rem;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,91,153,0.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+    .project-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background: #e3eaf2;
+    }
+    .project-info {
+      padding: 1.2rem;
+      flex: 1;
+    }
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+    /* Kontakt */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.9rem 1rem;
+      border: 1px solid #c5d6e8;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: var(--font-main);
+      background: #fafdff;
+      resize: none;
+      transition: border 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--blue);
+      outline: none;
+    }
+    .contact-form button {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 0.5rem;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover {
+      background: #003a63;
+    }
+    /* Footer */
+    footer {
+      background: var(--blue);
+      color: var(--white);
+      padding: 2.5rem 2rem 1.2rem 2rem;
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 3rem;
+    }
+    .footer-links {
+      margin: 1rem 0 0.5rem 0;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--white);
+      text-decoration: underline;
+      font-size: 0.98rem;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .footer-links a:hover {
+      opacity: 1;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-container { padding: 1rem 1.2rem; }
+      section { padding: 3.5rem 1rem 2.5rem 1rem; }
+      .hero-title { font-size: 2.1rem; }
+      .hero-img { width: 80vw; }
+    }
+    @media (max-width: 600px) {
+      .nav-container { flex-direction: column; gap: 0.7rem; }
+      nav ul { gap: 1.2rem; }
+      .hero { min-height: 60vh; }
+      .hero-title { font-size: 1.4rem; }
+      section { padding: 2.2rem 0.5rem 1.5rem 0.5rem; }
+      .footer-links { flex-direction: column; gap: 0.5rem; }
+    }
+    /* Animation Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(.77,0,.18,1), transform 0.8s cubic-bezier(.77,0,.18,1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s cubic-bezier(.77,0,.18,1), transform 0.8s cubic-bezier(.77,0,.18,1);
+    }
+    .slide-in-left.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s cubic-bezier(.77,0,.18,1), transform 0.8s cubic-bezier(.77,0,.18,1);
+    }
+    .slide-in-right.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body data-scroll-container>
+  <!-- Sticky Navigation -->
+  <header data-scroll-section>
+    <div class="nav-container">
+      <a href="#" class="logo" data-scroll>Wessel GmbH</a>
+      <nav>
+        <ul>
+          <li><a href="#about" data-scroll-to>Über uns</a></li>
+          <li><a href="#services" data-scroll-to>Leistungen</a></li>
+          <li><a href="#projects" data-scroll-to>Projekte</a></li>
+          <li><a href="#contact" data-scroll-to>Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" data-scroll-section>
+    <div class="hero-content fade-in" data-scroll data-scroll-speed="1">
+      <h1 class="hero-title">Moderne Kessellösungen aus Xanten</h1>
+      <p class="hero-desc">
+        Effizienz, Qualität und Nachhaltigkeit – dafür steht die Wessel GmbH.<br>
+        Ihr Partner für innovative Kesselbaulösungen.
+      </p>
+    </div>
+    <!-- Parallax Hero Image (Beispielbild, später ersetzen) -->
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
+         alt="Kesselbau Illustration"
+         class="hero-img"
+         data-scroll
+         data-scroll-speed="2"
+         data-scroll-direction="horizontal"
+    >
+  </section>
+
+  <!-- Über uns -->
+  <section id="about" data-scroll-section>
+    <h2 class="section-title fade-in" data-scroll>Über uns</h2>
+    <div class="about-content fade-in" data-scroll>
+      Die <strong>Wessel GmbH</strong> ist ein innovatives Unternehmen im Bereich Kesselbau mit Sitz in Xanten. Unter der Leitung von Inhaber <strong>Daniel Loules</strong> setzen wir auf modernste Technologien, höchste Qualitätsstandards und nachhaltige Lösungen. Unser Team vereint langjährige Erfahrung mit frischem Innovationsgeist – für Kesselsysteme, die Maßstäbe setzen.
+    </div>
+  </section>
+
+  <!-- Leistungen -->
+  <section id="services" data-scroll-section>
+    <h2 class="section-title fade-in" data-scroll>Leistungen</h2>
+    <div class="services-list">
+      <div class="service-card slide-in-left" data-scroll>
+        <div class="service-title">Individueller Kesselbau</div>
+        <div>Maßgeschneiderte Kessellösungen für Industrie und Gewerbe – von der Planung bis zur Inbetriebnahme.</div>
+      </div>
+      <div class="service-card fade-in" data-scroll>
+        <div class="service-title">Modernisierung & Wartung</div>
+        <div>Effizienzsteigerung und Werterhalt durch professionelle Modernisierung und regelmäßige Wartung.</div>
+      </div>
+      <div class="service-card slide-in-right" data-scroll>
+        <div class="service-title">Nachhaltige Technologien</div>
+        <div>Integration energieeffizienter und umweltfreundlicher Technologien für eine grüne Zukunft.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projekte -->
+  <section id="projects" data-scroll-section>
+    <h2 class="section-title fade-in" data-scroll>Projekte</h2>
+    <div class="projects-list">
+      <div class="project-card fade-in" data-scroll>
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80"
+             alt="Projekt 1" class="project-img">
+        <div class="project-info">
+          <div class="project-title">Industriekessel für Lebensmittelproduktion</div>
+          <div>Effiziente Dampfkessellösung mit modernster Steuerungstechnik.</div>
+        </div>
+      </div>
+      <div class="project-card fade-in" data-scroll>
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80"
+             alt="Projekt 2" class="project-img">
+        <div class="project-info">
+          <div class="project-title">Modernisierung Heizkraftwerk</div>
+          <div>Nachhaltige Umrüstung auf emissionsarme Brennstoffe.</div>
+        </div>
+      </div>
+      <div class="project-card fade-in" data-scroll>
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=600&q=80"
+             alt="Projekt 3" class="project-img">
+        <div class="project-info">
+          <div class="project-title">Wartung Großkesselanlage</div>
+          <div>Langfristige Betreuung und Optimierung für maximale Betriebssicherheit.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="contact" data-scroll-section>
+    <h2 class="section-title fade-in" data-scroll>Kontakt</h2>
+    <form class="contact-form fade-in" data-scroll autocomplete="off">
+      <input type="text" name="name" placeholder="Ihr Name" required>
+      <input type="email" name="email" placeholder="Ihre E-Mail" required>
+      <textarea name="message" rows="5" placeholder="Ihre Nachricht" required></textarea>
+      <button type="submit">Nachricht senden</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <strong>Wessel GmbH</strong> &ndash; Inhaber: Daniel Loules<br>
+      Industriestraße 1, 46509 Xanten<br>
+      Tel: 02801 123456 &nbsp;|&nbsp; E-Mail: info@wessel-gmbh.de
+    </div>
+    <div class="footer-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+    <div style="opacity:0.7; font-size:0.95rem;">
+      &copy; 2024 Wessel GmbH. Alle Rechte vorbehalten.
+    </div>
+  </footer>
+
+  <!-- Locomotive Scroll JS -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  <!-- GSAP (optional, für zusätzliche Animationen) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // Initialisiere Locomotive Scroll
+    const scroll = new LocomotiveScroll({
+      el: document.querySelector('[data-scroll-container]'),
+      smooth: true,
+      lerp: 0.08,
+      multiplier: 1,
+      smartphone: { smooth: true },
+      tablet: { smooth: true }
+    });
+
+    // Fade-In & Slide-In Animationen bei Sichtbarkeit
+    function animateOnScroll() {
+      const animatedEls = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+      animatedEls.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    scroll.on('scroll', animateOnScroll);
+    window.addEventListener('DOMContentLoaded', animateOnScroll);
+
+    // Parallax Hero Image (leichtes horizontales Parallax via Locomotive Scroll)
+    // (Bereits via data-scroll-speed gesetzt)
+
+    // Smooth Scroll für Menü-Links
+    document.querySelectorAll('a[data-scroll-to]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          scroll.scrollTo(target, { offset: -60, duration: 800, easing: [0.77,0,0.18,1] });
+        }
+      });
+    });
+
+    // Kontaktformular (Dummy, kein Versand)
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Vielen Dank für Ihre Nachricht! Wir melden uns zeitnah bei Ihnen.');
+      this.reset();
+    });
+
+    // Optional: GSAP für zusätzliche Animationen (z.B. Logo)
+    gsap && gsap.from('.logo', { y: -40, opacity: 0, duration: 1, ease: "power2.out" });
+  </script>
+</body>
+</html>
